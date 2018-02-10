@@ -1,6 +1,6 @@
 %% Busqueda de raices: Metodo binomial
 L = [-5 -4]; % limites [Inferior Superior]
-NL = abs(L(2)-L(1)); % Norma del vector
+NL = abs(L(2)-L(1)); % Diferencia entre limites
 i = 0; formatSpec = 'Iteration number: %d \n';
 tic
 while NL > 10^-13
@@ -10,18 +10,18 @@ while NL > 10^-13
     elseif (fx(L(2))*fx(D)) < 0
         L = [D L(2)];
     else
-        break;
+        L = [L(1),L(2)];
     end
     i = i + 1;
     NL = abs(L(2)-L(1));
-    %fprintf(formatSpec,i)
+    fprintf(formatSpec,i)
 end
 toc
 %% Busqueda de raices: Proporción áurea
 Aurea = (sqrt(5) - 1)/2;
 % Correspondientes a los extremos x1 y x2, y al punto interno x3
 L = [-10 0]; 
-NL = abs(L(2)-L(1)); % Norma del vector
+NL = abs(L(2)-L(1)); % Diferencia entre limites
 i = 0; formatSpec = 'Iteration number: %d \n';
 tic
 while NL > 10^-13
@@ -40,7 +40,7 @@ end
 toc
 %% Metodo de la secante
 L = [-5 -2]; % x1 y x2
-NL = abs(L(2)-L(1)); % Norma del vector
+NL = abs(L(2)-L(1)); % Diferencia entre limites
 i = 0; formatSpec = 'Iteration number: %d \n';
 tic
 while NL > 10^-13
@@ -54,11 +54,14 @@ toc
 delta =  0.01;
 x0 = -5; % Valor inicial
 d = 0.1; % Diferencia inical
+i = 0; formatSpec = 'Iteration number: %d \n';
 tic
 while d > 10^-13
     dif = (fx(x0+delta) - fx(x0))/delta; % Derivada
     x1 = x0 - (fx(x0)/dif); % Newton-Raphson
     d = abs(x1 - x0); x0 = x1;
+    i = i + 1;
+    fprintf(formatSpec,i)
 end
 toc
 %% Verificacion
