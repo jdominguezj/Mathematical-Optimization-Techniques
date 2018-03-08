@@ -1,14 +1,19 @@
-%% Variables
-clear
-close
-clc
-xn  = [4 2];
-
+% Mesh funtion
+clear; close; clc;
+[X,Y] = meshgrid(0:0.1:5,0:0.1:3);
+U1 = U(X,Y);
+figure(1), surf(X,Y,U1)
+figure(2),contour(X,Y,U1,100),hold on
+% Metodo de gradiente
+xn  = [4 2]; % x y lamda
 iter = 0;
 vecU = [];
 vecU(1) = U(xn);
+camino(1,:) = xn;
+fprintf('Running Gradient Descent ...')
 while 1
     iter = iter+1;
+    fprintf([num2str(iter),', '])
     gd = gradiente(xn);
     Vn = -gd/norm(gd);
     
@@ -20,7 +25,7 @@ while 1
     
     if dh_dt1 > 0
         error('Signo positivo')
-        break
+        break;
     end
     
     i = 1;
@@ -41,7 +46,7 @@ while 1
             t2 = k;
         elseif dh2*dhk < 0
             t1 = k;
-        elseif dk == 0
+        elseif dhk == 0
             break
         end
         
@@ -54,20 +59,28 @@ while 1
     vecU(iter+1) = U(xn_1);
     
     if  norm(gd) < 1e-6
-        disp('Magnitud del gradiente muy pequeño')
+        fprintf('\n')
+        fprintf('X found by gradient descent: ');
+        fprintf('%f %f \n', xn(1), xn(2));
         break
     elseif norm(xn_1-xn)/norm(xn_1) < 1e-6
-        disp('Cambio pequeño entre xn y xn+1')
+        fprintf('\n')
+        fprintf('X found by gradient descent: ');
+        fprintf('%f %f \n', xn(1), xn(2));
         break
     elseif iter >= 3000
-        disp('Muchas iteraciones')
+        fprintf('\n')
+        disp('Maximum Number of Iterations')
         break
     end
     
     
     xn = xn_1;
+    camino(iter+1,:) = xn;
     
 end
+plotdata(camino,vecU)
+hold off
 %%
 % NI = 1e-13;
 % iter = 0;
