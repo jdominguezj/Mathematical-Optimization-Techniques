@@ -10,6 +10,8 @@
 
 % http://web.ist.utl.pt/gdgp/VA/pso.htm
 
+% This code is part of research work done by Jesus Pineda Castro, Jackson Meza and 
+% Juan Dominguez. Universidad Tecnológica de Bolívar , Cartagena, Colombia.
 %-------------------------------------------------------------------------------------
 % parameter description:
 % --------------------------
@@ -49,7 +51,7 @@ PARTICULES_POSITIONS = (XMAX-XMIN).*rand(PARTICULES_NUM,DIMENSION)+XMIN;
 PARTICULES_VELOCITY = (0.6667*VMAX(1))*rand(PARTICULES_NUM,DIMENSION)-0.3333*VMAX(1);
 % Initialize particule's best position
 gbest = PARTICULES_POSITIONS(1,:); % Initial best value (Global)
-OPERATION = 'MINIMIZE'; % �What do you want? �MAXIMIZE or MINIMIZE?
+OPERATION = 'MINIMIZE'; % ¿What do you want? ¿MAXIMIZE or MINIMIZE?
 [gbest,fvalues] = getbest(gbest,PARTICULES_POSITIONS,OPERATION,functionObj);
 % initialize lBest
 lBest = PARTICULES_POSITIONS;
