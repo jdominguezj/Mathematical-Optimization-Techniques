@@ -1,5 +1,5 @@
 %% PSO Algorithm
-%-------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
 % Particle Swarm Optimization ---> The basic concept of the algorithm is to create a 
 % swarm of particles which move in the space around them (the problem space) searching 
 % for their goal, the place which best suits their needs given by a fitness function.
@@ -12,7 +12,7 @@
 
 % This code is part of research work done by Jesus Pineda Castro, Jackson Meza and 
 % Juan Dominguez. Universidad Tecnológica de Bolívar , Cartagena, Colombia.
-%-------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------
 % parameter description:
 % --------------------------
 % PARTICULES_NUM       ---- The number of particles
