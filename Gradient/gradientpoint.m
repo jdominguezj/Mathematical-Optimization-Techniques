@@ -1,3 +1,5 @@
+%Gradient finally function implemented                                    
+
 function [G] = gradientpoint(x,S,A,B)
 
 epsilon = 1e-5;
